@@ -42,7 +42,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:
@@ -83,6 +83,7 @@ jobs:
         create-symlink: true
 
     - name: Setup zram
+      continue-on-error: true
       run: |
         sudo apt install linux-modules-extra-$(uname -r) zram-tools -y
         sudo modprobe zram
